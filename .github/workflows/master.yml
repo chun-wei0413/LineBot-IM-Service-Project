@@ -38,7 +38,7 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       shell: bash
       run: |
-        docker build -t linebot:latest .
+        docker build -t linebot:latest lineBot/
         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         docker tag linebot russellli/linebot
         docker push russellli/linebot:latest
