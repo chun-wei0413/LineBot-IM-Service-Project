@@ -1,6 +1,6 @@
 FROM openjdk:17
 
 WORKDIR /
-COPY target/linebot.jar /
+COPY target/lineBot-0.0.1-SNAPSHOT.jar /
 
-CMD ["java","-jar","linebot.jar"]
+CMD ["java","-jar","lineBot-0.0.1-SNAPSHOT.jar"]
