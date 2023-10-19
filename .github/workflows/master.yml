@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build
+      run: mvn -B -f lineBot-project/pom.xml clean install
+
+    - name: Test
+      run: mvn -B -f lineBot-project/pom.xml test
+      
+    - name: Debug
+      run: |
+        pwd
+        ls -la
+        ls -la lineBot-project
+        ls -la lineBot-project/target
+      
+    - name: Build and push Docker image
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      shell: bash
+      run: |
+        docker build -t linebot:latest .
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        docker tag linebot russellli/linebot
+        docker push russellli/linebot:latest
