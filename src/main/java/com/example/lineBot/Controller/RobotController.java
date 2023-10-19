@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/robot")
 @RestController
 public class RobotController {
-//嗨嗨
+//su3c
     @GetMapping("/test")
     public ResponseEntity<String> test() {
         return new ResponseEntity<String>("Hello JAVA", HttpStatus.OK);
