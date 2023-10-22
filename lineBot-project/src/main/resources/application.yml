@@ -1,8 +1,15 @@
 Server:
-  port: 9000
+  port: 8080
 
 line.bot:
   channel-token: o/URuUmOv9NtHn1cYVpi8TlEk07hH4d+itq2R8xLi/hRUaKvaDlRFUK6jBCPNpxqEjRORbKhKcB9okKjq6j7MLCm/BETNnIQROSkW9nA1pugiu+Of9c+/iscuMmYyfsVYJUeoj6a7X8AalA7FK86kgdB04t89/1O/w1cDnyilFU=
   channel-secret: e14537c2990511ac735593c6eac49661
   handler.path: /callback
 
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+    connection-timeout: 25000
+    host: 127.0.0.1
+    port: 5672
