@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RobotController {
-//你好呀
+//c
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public String home(){
